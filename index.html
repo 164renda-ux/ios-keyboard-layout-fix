@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- 
+      CRITICAL FOR IOS: 
+      - interactive-widget=resizes-content: Tells the browser to resize the viewport synchronously 
+        when the keyboard opens (iOS 15+ & Android).
+      - viewport-fit=cover: Handles the notch area.
+      - user-scalable=no: Prevents zooming.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>iOS Layout Fix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* 
+        CRITICAL FIX: 
+        Lock the document body so iOS Safari cannot scroll the whole page 
+        when the virtual keyboard opens.
+      */
+      html {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        position: fixed; /* Strictly lock the html */
+      }
+      body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        position: fixed; /* Strictly lock the body */
+        overscroll-behavior: none;
+        background-color: #f9fafb; /* Match app bg */
+        -webkit-font-smoothing: antialiased;
+      }
+      #root {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

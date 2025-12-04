@@ -1,0 +1,5 @@
+{
+  "name": "Copy of iOS Keyboard Layout Fix",
+  "description": "A robust chat-style layout that prevents the top navigation bar from being pushed off-screen when the keyboard opens on iOS devices.",
+  "requestFramePermissions": []
+}
